@@ -11,6 +11,8 @@ import SimpleLandingPage from './pages/SimpleLandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import StudentDashboard from './pages/student/StudentDashboard';
+import StudentDirectory from './pages/student/StudentDirectory';
+import StudentProfile from './pages/student/StudentProfile';
 import SimpleAdminDashboard from './pages/admin/SimpleAdminDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AlumniDashboard from './pages/alumni/AlumniDashboard';
@@ -37,10 +39,26 @@ function App() {
           
           {/* Student Routes */}
           <Route
-            path="/student/*"
+            path="/student/dashboard"
             element={
               <ProtectedRoute>
                 <StudentDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student/directory"
+            element={
+              <ProtectedRoute>
+                <StudentDirectory />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student/profile"
+            element={
+              <ProtectedRoute>
+                <StudentProfile />
               </ProtectedRoute>
             }
           />

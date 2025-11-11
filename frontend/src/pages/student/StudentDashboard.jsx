@@ -3,7 +3,7 @@ import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mu
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { motion } from 'framer-motion';
-import { Dashboard, Person, Business, Work, Assignment } from '@mui/icons-material';
+import { Dashboard, Person, Business, Work, Assignment, People } from '@mui/icons-material';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const StudentDashboard = () => {
 
   const menuItems = [
     { title: 'My Profile', icon: <Person />, path: '/student/profile', color: '#ff6b35' },
+    { title: 'Student Directory', icon: <People />, path: '/student/directory', color: '#10b981' },
     { title: 'Company Recommendations', icon: <Business />, path: '/student/recommendations', color: '#1e88e5' },
     { title: 'Internal Jobs', icon: <Work />, path: '/student/internal-jobs', color: '#f7931e' },
     { title: 'My Applications', icon: <Assignment />, path: '/student/applications', color: '#42a5f5' },
@@ -77,7 +78,7 @@ const StudentDashboard = () => {
 
         <Grid container spacing={4}>
           {menuItems.map((item, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={12} sm={6} md={4} lg={2.4} key={index}>
               <Box
                 component={motion.div}
                 initial={{ opacity: 0, y: 30 }}
