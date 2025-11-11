@@ -1,0 +1,21 @@
+import express from 'express';
+import {
+  getAllInternalJobs,
+  getInternalJobById,
+  applyForInternalJob,
+  getInternalJobApplications
+} from '../controllers/jobController.js';
+import { protect } from '../middleware/auth.js';
+import { isStudent, isAdmin } from '../middleware/roles.js';
+
+const router = express.Router();
+
+// Student routes for internal jobs
+router.get('/internal', protect, isStudent, getAllInternalJobs);
+router.get('/internal/:id', protect, isStudent, getInternalJobById);
+router.post('/internal/:id/apply', protect, isStudent, applyForInternalJob);
+
+// Admin routes for internal job applications
+router.get('/internal/:id/applications', protect, isAdmin, getInternalJobApplications);
+
+export default router;
