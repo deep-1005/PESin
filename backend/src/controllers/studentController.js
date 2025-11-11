@@ -3,6 +3,29 @@ import Company from '../models/company.js';
 import Application from '../models/application.js';
 import { getRecommendedCompanies, checkJobEligibility, getSuggestedSkills } from '../utils/matchingAlgorithm.js';
 
+// @desc    Get all students (for directory)
+// @route   GET /api/students
+// @access  Private (Student/Alumni)
+export const getAllStudents = async (req, res) => {
+  try {
+    const students = await User.find({ role: { $in: ['student', 'alumni'] } })
+      .select('-password')
+      .sort({ firstName: 1 });
+
+    res.status(200).json({
+      success: true,
+      count: students.length,
+      data: students
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Error fetching students',
+      error: error.message
+    });
+  }
+};
+
 // @desc    Get student profile
 // @route   GET /api/students/profile
 // @access  Private (Student)

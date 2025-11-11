@@ -1,5 +1,6 @@
 import express from 'express';
 import {
+  getAllStudents,
   getStudentProfile,
   updateStudentProfile,
   uploadResume,
@@ -14,7 +15,10 @@ import { upload, handleMulterError } from '../utils/fileUpload.js';
 
 const router = express.Router();
 
-// All routes are protected and student-only
+// Get all students - accessible to all authenticated students/alumni
+router.get('/', protect, getAllStudents);
+
+// All other routes are protected and student-only
 router.use(protect, isStudent);
 
 router.get('/profile', getStudentProfile);
