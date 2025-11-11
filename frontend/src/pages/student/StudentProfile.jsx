@@ -72,7 +72,12 @@ const StudentProfile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await axios.get('/api/students/profile');
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:5000/api/students/profile', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (response.data.success) {
         const data = response.data.data;
         setProfileData({
@@ -81,18 +86,24 @@ const StudentProfile = () => {
           skills: data.skills || [],
           projects: data.projects || [],
           certifications: data.certifications || [],
-          resume: data.resume || null
+          resume: data.resumeUrl || null
         });
       }
     } catch (error) {
       console.error('Error fetching profile:', error);
+      toast.error('Failed to load profile');
     }
   };
 
   const handleSave = async () => {
     setLoading(true);
     try {
-      const response = await axios.put('/api/students/profile', profileData);
+      const token = localStorage.getItem('token');
+      const response = await axios.put('http://localhost:5000/api/students/profile', profileData, {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (response.data.success) {
         toast.success('Profile updated successfully!');
         setEditing(false);
@@ -154,15 +165,21 @@ const StudentProfile = () => {
       formData.append('resume', file);
 
       try {
-        const response = await axios.post('/api/students/upload-resume', formData, {
-          headers: { 'Content-Type': 'multipart/form-data' }
+        const token = localStorage.getItem('token');
+        const response = await axios.post('http://localhost:5000/api/students/resume', formData, {
+          headers: { 
+            'Content-Type': 'multipart/form-data',
+            'Authorization': `Bearer ${token}`
+          }
         });
         if (response.data.success) {
           toast.success('Resume uploaded successfully!');
-          setProfileData({ ...profileData, resume: response.data.data.resumePath });
+          setProfileData({ ...profileData, resume: response.data.data.resumeUrl });
+          fetchProfile(); // Refresh profile data
         }
       } catch (error) {
-        toast.error('Failed to upload resume');
+        console.error('Resume upload error:', error);
+        toast.error(error.response?.data?.message || 'Failed to upload resume');
       }
     }
   };
