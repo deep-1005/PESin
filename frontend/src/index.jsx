@@ -7,7 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './styles.css';
 
 // Import pages
-import LandingPage from './pages/LandingPage';
+import SimpleLandingPage from './pages/SimpleLandingPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import StudentDashboard from './pages/student/StudentDashboard';
@@ -31,7 +31,7 @@ function App() {
     <BrowserRouter>
       <AuthProvider>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<SimpleLandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           
