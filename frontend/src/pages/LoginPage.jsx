@@ -37,23 +37,23 @@ const LoginPage = () => {
     e.preventDefault();
     setLoading(true);
 
-    const result = await login(formData.email, formData.password);
-
-    if (result.success) {
-      toast.success(result.message);
+    try {
+      const user = await login(formData.email, formData.password);
+      toast.success('Login successful!');
+      
       // Navigate based on role
-      if (result.user.role === 'student') {
+      if (user.role === 'student') {
         navigate('/student/dashboard');
-      } else if (result.user.role === 'alumni') {
+      } else if (user.role === 'alumni') {
         navigate('/alumni/dashboard');
-      } else if (result.user.role === 'admin') {
-        navigate('/admin/dashboard');
+      } else if (user.role === 'admin') {
+        navigate('/admin/simple'); // Simple Admin Dashboard
       }
-    } else {
-      toast.error(result.message);
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Login failed');
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
 
   return (
