@@ -225,7 +225,6 @@ const RegisterPage = () => {
                     required
                   >
                     <MenuItem value="student">Student</MenuItem>
-                    <MenuItem value="alumni">Alumni</MenuItem>
                     <MenuItem value="admin">Admin</MenuItem>
                   </TextField>
                 </Grid>

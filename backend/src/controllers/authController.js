@@ -39,7 +39,7 @@ export const register = async (req, res) => {
       branch,
       semester,
       phone,
-      isApproved: role === 'admin' ? true : false // Auto-approve admins
+      isApproved: true // Auto-approve all users
     });
 
     // Generate token
@@ -47,7 +47,7 @@ export const register = async (req, res) => {
 
     res.status(201).json({
       success: true,
-      message: role === 'admin' ? 'Admin registered successfully' : 'Registration successful! Please wait for admin approval.',
+      message: 'Registration successful! You can now login.',
       data: {
         user: user.getPublicProfile(),
         token
@@ -114,14 +114,6 @@ export const login = async (req, res) => {
       return res.status(401).json({
         success: false,
         message: 'Invalid credentials'
-      });
-    }
-
-    // Check if user is approved (except for admins)
-    if (!user.isApproved && user.role !== 'admin') {
-      return res.status(403).json({
-        success: false,
-        message: 'Your account is pending approval by admin. Please wait for activation.'
       });
     }
 
