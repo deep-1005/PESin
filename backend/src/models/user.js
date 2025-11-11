@@ -73,6 +73,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  graduationYear: {
+    type: Number,
+    min: 2000,
+    max: 2030
+  },
+  currentStatus: {
+    type: String,
+    enum: ['current', 'alumni'],
+    default: 'current'
+  },
   
   // Student Portfolio fields
   bio: {
