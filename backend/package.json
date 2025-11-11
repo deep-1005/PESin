@@ -8,6 +8,7 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "seed": "node src/scripts/seedDatabase.js",
+    "seed-admin": "node src/scripts/seedAdminAndJobs.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [

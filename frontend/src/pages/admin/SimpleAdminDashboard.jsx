@@ -44,6 +44,7 @@ import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import CollegeInternalJobs from '../CollegeInternalJobs';
 
 const SimpleAdminDashboard = () => {
   const { user, logout } = useAuth();
@@ -410,58 +411,7 @@ const SimpleAdminDashboard = () => {
 
             {/* Tab 2: Internal Jobs */}
             {currentTab === 2 && (
-              <Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 600 }}>
-                    Internal Job Postings
-                  </Typography>
-                  <Button
-                    variant="contained"
-                    startIcon={<Add />}
-                    onClick={() => setOpenJobDialog(true)}
-                  >
-                    Post Job
-                  </Button>
-                </Box>
-                {internalJobs.length === 0 ? (
-                  <Typography color="text.secondary">No internal jobs posted yet</Typography>
-                ) : (
-                  <TableContainer>
-                    <Table>
-                      <TableHead>
-                        <TableRow>
-                          <TableCell><strong>Title</strong></TableCell>
-                          <TableCell><strong>Department</strong></TableCell>
-                          <TableCell><strong>Type</strong></TableCell>
-                          <TableCell><strong>Stipend</strong></TableCell>
-                          <TableCell><strong>Actions</strong></TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {internalJobs.map((job) => (
-                          <TableRow key={job._id}>
-                            <TableCell>{job.title}</TableCell>
-                            <TableCell>{job.department}</TableCell>
-                            <TableCell>
-                              <Chip label={job.type} size="small" color="primary" />
-                            </TableCell>
-                            <TableCell>₹{job.stipend}/month</TableCell>
-                            <TableCell>
-                              <IconButton 
-                                size="small" 
-                                color="error"
-                                onClick={() => handleDeleteJob(job._id)}
-                              >
-                                <Delete />
-                              </IconButton>
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-                )}
-              </Box>
+              <CollegeInternalJobs isAdmin={true} />
             )}
           </Box>
         </Paper>

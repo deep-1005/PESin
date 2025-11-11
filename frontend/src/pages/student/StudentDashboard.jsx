@@ -13,7 +13,7 @@ const StudentDashboard = () => {
     { title: 'My Profile', icon: <Person />, path: '/student/profile', color: '#ff6b35' },
     { title: 'Student Directory', icon: <People />, path: '/student/directory', color: '#10b981' },
     { title: 'Company Recommendations', icon: <Business />, path: '/student/recommendations', color: '#1e88e5' },
-    { title: 'Internal Jobs', icon: <Work />, path: '/student/internal-jobs', color: '#f7931e' },
+    { title: 'College Opportunities', icon: <Work />, path: '/student/college-jobs', color: '#f7931e' },
     { title: 'My Applications', icon: <Assignment />, path: '/student/applications', color: '#42a5f5' },
   ];
 
