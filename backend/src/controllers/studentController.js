@@ -60,6 +60,7 @@ export const updateStudentProfile = async (req, res) => {
       cgpa,
       bio,
       skills,
+      topSkill,
       projects,
       certifications,
       achievements,
@@ -77,21 +78,22 @@ export const updateStudentProfile = async (req, res) => {
       });
     }
 
-    // Update fields
-    if (firstName) student.firstName = firstName;
-    if (lastName) student.lastName = lastName;
-    if (phone) student.phone = phone;
-    if (branch) student.branch = branch;
-    if (semester) student.semester = semester;
+    // Update fields (use !== undefined to allow empty strings and 0 values)
+    if (firstName !== undefined) student.firstName = firstName;
+    if (lastName !== undefined) student.lastName = lastName;
+    if (phone !== undefined) student.phone = phone;
+    if (branch !== undefined) student.branch = branch;
+    if (semester !== undefined) student.semester = semester;
     if (cgpa !== undefined) student.cgpa = cgpa;
-    if (bio) student.bio = bio;
-    if (skills) student.skills = skills;
-    if (projects) student.projects = projects;
-    if (certifications) student.certifications = certifications;
-    if (achievements) student.achievements = achievements;
-    if (linkedIn) student.linkedIn = linkedIn;
-    if (github) student.github = github;
-    if (portfolio) student.portfolio = portfolio;
+    if (bio !== undefined) student.bio = bio;
+    if (skills !== undefined) student.skills = skills;
+    if (topSkill !== undefined) student.topSkill = topSkill;
+    if (projects !== undefined) student.projects = projects;
+    if (certifications !== undefined) student.certifications = certifications;
+    if (achievements !== undefined) student.achievements = achievements;
+    if (linkedIn !== undefined) student.linkedIn = linkedIn;
+    if (github !== undefined) student.github = github;
+    if (portfolio !== undefined) student.portfolio = portfolio;
 
     await student.save();
 
@@ -148,23 +150,68 @@ export const getCompanyRecommendations = async (req, res) => {
   try {
     const student = await User.findById(req.user._id);
 
-    if (!student.skills || student.skills.length === 0) {
+    if (!student.topSkill) {
       return res.status(400).json({
         success: false,
-        message: 'Please add skills to your profile to get recommendations'
+        message: 'Please select your top skill in your profile to get company recommendations'
       });
     }
 
-    // Get all active companies
-    const companies = await Company.find({ isActive: true });
+    // Hardcoded company mapping based on top skill
+    const companyMapping = {
+      'JavaScript': 'Google',
+      'HTML and CSS': 'Airbnb',
+      'Backend': 'Amazon',
+      'Data Science': 'Netflix',
+      'Node': 'PayPal',
+      'Communication-Soft Skill': null // No specific company for communication
+    };
 
-    // Get recommendations
-    const recommendations = getRecommendedCompanies(student.skills, companies);
+    const recommendedCompanyName = companyMapping[student.topSkill];
+
+    if (!recommendedCompanyName) {
+      return res.status(200).json({
+        success: true,
+        message: 'No specific company recommendation for this skill',
+        data: []
+      });
+    }
+
+    // Find the recommended company
+    const company = await Company.findOne({ 
+      name: { $regex: new RegExp(recommendedCompanyName, 'i') } 
+    });
+
+    if (!company) {
+      return res.status(200).json({
+        success: true,
+        message: `${recommendedCompanyName} not found in database. Please add it.`,
+        data: []
+      });
+    }
+
+    // Format the response
+    const recommendation = {
+      company: {
+        _id: company._id,
+        name: company.name,
+        industry: company.industry,
+        location: company.location,
+        description: company.description,
+        website: company.website,
+        contactEmail: company.contactEmail,
+        contactPhone: company.contactPhone
+      },
+      matchPercentage: 100, // Perfect match since it's based on top skill
+      matchedSkills: [student.topSkill],
+      missingSkills: [],
+      reason: `Perfect match for your top skill: ${student.topSkill}`
+    };
 
     res.status(200).json({
       success: true,
-      count: recommendations.length,
-      data: recommendations
+      count: 1,
+      data: [recommendation]
     });
   } catch (error) {
     res.status(500).json({

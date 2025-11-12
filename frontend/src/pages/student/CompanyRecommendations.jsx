@@ -32,13 +32,22 @@ const CompanyRecommendations = () => {
   const fetchRecommendations = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/students/recommendations');
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:5000/api/students/recommendations', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
       if (response.data.success) {
         setRecommendations(response.data.data);
       }
     } catch (error) {
       console.error('Error fetching recommendations:', error);
-      toast.error('Failed to fetch recommendations');
+      if (error.response?.data?.message) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error('Failed to fetch recommendations');
+      }
     } finally {
       setLoading(false);
     }
@@ -72,160 +81,230 @@ const CompanyRecommendations = () => {
       <Container maxWidth="lg" sx={{ py: 4 }}>
         <Box sx={{ mb: 4 }}>
           <Typography variant="h4" sx={{ fontWeight: 800, mb: 1 }}>
-            Companies Matched For You
+            🎯 Your Perfect Company Match
           </Typography>
           <Typography variant="body1" color="text.secondary">
-            Based on your skills and profile
+            Based on your selected Top Skill
           </Typography>
         </Box>
 
         {loading ? (
-          <Paper sx={{ p: 4, textAlign: 'center' }}>
-            <Typography sx={{ mb: 2 }}>Loading recommendations...</Typography>
+          <Paper sx={{ p: 4, textAlign: 'center', borderRadius: 3 }}>
+            <Typography sx={{ mb: 2 }}>Loading your personalized recommendation...</Typography>
             <LinearProgress />
           </Paper>
         ) : recommendations.length === 0 ? (
-          <Alert severity="info">
-            <Typography variant="body1" sx={{ fontWeight: 600, mb: 1 }}>
-              No recommendations available yet
+          <Alert 
+            severity="warning" 
+            sx={{ 
+              borderRadius: 3, 
+              p: 3,
+              '& .MuiAlert-message': { width: '100%' }
+            }}
+          >
+            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+              🎓 Select Your Top Skill First!
             </Typography>
-            <Typography variant="body2">
-              Please complete your profile and add skills to get personalized company recommendations.
+            <Typography variant="body1" sx={{ mb: 2 }}>
+              To get your personalized company recommendation, please select your top skill from the dropdown in your profile.
             </Typography>
+            <Typography variant="body2" sx={{ mb: 2, color: 'text.secondary' }}>
+              <strong>Available top skills:</strong>
+            </Typography>
+            <Box sx={{ mb: 2 }}>
+              <Chip label="JavaScript → Google" sx={{ mr: 1, mb: 1 }} color="primary" />
+              <Chip label="HTML and CSS → Airbnb" sx={{ mr: 1, mb: 1 }} color="secondary" />
+              <Chip label="Backend → Amazon" sx={{ mr: 1, mb: 1 }} color="success" />
+              <Chip label="Data Science → Netflix" sx={{ mr: 1, mb: 1 }} color="error" />
+              <Chip label="Node → PayPal" sx={{ mr: 1, mb: 1 }} color="info" />
+            </Box>
             <Button 
               variant="contained" 
-              sx={{ mt: 2 }}
+              size="large"
+              sx={{ 
+                mt: 2,
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+              }}
               onClick={() => navigate('/student/profile')}
             >
-              Complete Profile
+              Go to Profile & Select Top Skill
             </Button>
           </Alert>
         ) : (
           <Grid container spacing={3}>
             {recommendations.map((rec, index) => (
-              <Grid item xs={12} md={6} key={index}>
+              <Grid item xs={12} key={index}>
                 <Card 
                   sx={{ 
                     height: '100%',
                     transition: 'all 0.3s ease',
+                    borderRadius: 4,
+                    border: '2px solid #10b981',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #f0fdf4 100%)',
                     '&:hover': {
                       transform: 'translateY(-8px)',
-                      boxShadow: '0 15px 40px rgba(0,0,0,0.15)'
+                      boxShadow: '0 20px 60px rgba(16, 185, 129, 0.3)'
                     }
                   }}
                 >
-                  <CardContent sx={{ p: 3 }}>
+                  <CardContent sx={{ p: 4 }}>
+                    {/* Perfect Match Badge */}
+                    <Box sx={{ textAlign: 'center', mb: 3 }}>
+                      <Chip 
+                        icon={<CheckCircle />}
+                        label="🎯 PERFECT MATCH FOR YOUR TOP SKILL"
+                        sx={{ 
+                          background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                          color: 'white',
+                          fontWeight: 800,
+                          fontSize: '1rem',
+                          py: 3,
+                          px: 2,
+                          height: 'auto',
+                          '& .MuiChip-icon': { color: 'white', fontSize: '1.5rem' }
+                        }}
+                      />
+                    </Box>
+
                     {/* Company Header */}
-                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
-                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <Business sx={{ fontSize: 40, color: '#ff6b35', mr: 2 }} />
-                      <Box>
-                          <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+                      <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                        <Business sx={{ fontSize: 60, color: '#10b981', mr: 2 }} />
+                        <Box>
+                          <Typography variant="h4" sx={{ fontWeight: 800, mb: 0.5 }}>
                             {rec.company.name}
                           </Typography>
-                          <Typography variant="body2" color="text.secondary">
+                          <Typography variant="h6" color="text.secondary" sx={{ fontWeight: 500 }}>
                             {rec.company.industry}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary" sx={{ mt: 0.5 }}>
+                            📍 {rec.company.location}
                           </Typography>
                         </Box>
                       </Box>
                       <Chip 
                         label={`${rec.matchPercentage}% Match`}
                         sx={{ 
-                          background: getMatchColor(rec.matchPercentage),
+                          background: '#10b981',
                           color: 'white',
-                          fontWeight: 700
+                          fontWeight: 800,
+                          fontSize: '1.2rem',
+                          py: 3,
+                          px: 2,
+                          height: 'auto'
                         }}
                       />
                     </Box>
 
-                    {/* Match Details */}
-                    <Box sx={{ mb: 2 }}>
-                      <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, display: 'flex', alignItems: 'center' }}>
-                        <TrendingUp sx={{ fontSize: 18, mr: 0.5, color: '#10b981' }} />
-                        Match Score
+                    {/* Description */}
+                    <Paper sx={{ p: 3, mb: 3, background: 'white', borderRadius: 3 }}>
+                      <Typography variant="body1" sx={{ lineHeight: 1.8 }}>
+                        {rec.company.description}
                       </Typography>
-                      <LinearProgress 
-                        variant="determinate" 
-                        value={rec.matchPercentage} 
+                    </Paper>
+
+                    {/* Your Top Skill */}
+                    <Box sx={{ mb: 3 }}>
+                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, display: 'flex', alignItems: 'center' }}>
+                        <TrendingUp sx={{ fontSize: 24, mr: 1, color: '#10b981' }} />
+                        Your Top Skill
+                      </Typography>
+                      <Chip 
+                        icon={<CheckCircle />}
+                        label={rec.matchedSkills[0]} 
                         sx={{ 
-                          height: 8, 
-                          borderRadius: 4,
-                          backgroundColor: '#e5e7eb',
-                          '& .MuiLinearProgress-bar': {
-                            background: `linear-gradient(90deg, ${getMatchColor(rec.matchPercentage)}, ${getMatchColor(rec.matchPercentage)}dd)`
-                          }
+                          fontSize: '1.1rem',
+                          py: 3,
+                          px: 2,
+                          height: 'auto',
+                          background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                          color: 'white',
+                          fontWeight: 700,
+                          '& .MuiChip-icon': { color: 'white', fontSize: '1.3rem' }
                         }}
                       />
                     </Box>
 
-                    {/* Matched Skills */}
-                    <Box sx={{ mb: 2 }}>
-                      <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, display: 'flex', alignItems: 'center' }}>
-                        <CheckCircle sx={{ fontSize: 18, mr: 0.5, color: '#10b981' }} />
-                        Matched Skills ({rec.matchedSkills.length})
+                    {/* Why This Match */}
+                    <Paper sx={{ mb: 3, p: 3, background: '#ecfdf5', borderRadius: 3, border: '2px solid #10b981' }}>
+                      <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#10b981' }}>
+                        ✨ Why This is Your Perfect Match
                       </Typography>
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                        {rec.matchedSkills.map((skill, i) => (
-                          <Chip 
-                            key={i} 
-                            label={skill} 
-                            size="small" 
-                            color="success" 
-                            variant="outlined"
-                          />
-                        ))}
-                      </Box>
-                    </Box>
+                      <Typography variant="body1" sx={{ color: '#065f46' }}>
+                        {rec.reason || `${rec.company.name} is the ideal company for students with ${rec.matchedSkills[0]} as their top skill!`}
+                      </Typography>
+                    </Paper>
 
-                    {/* Missing Skills */}
-                    {rec.missingSkills.length > 0 && (
-                      <Box sx={{ mb: 2 }}>
-                        <Typography variant="body2" sx={{ fontWeight: 600, mb: 1, color: '#f59e0b' }}>
-                          Skills to Improve ({rec.missingSkills.length})
-                        </Typography>
-                        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                          {rec.missingSkills.slice(0, 5).map((skill, i) => (
-                            <Chip 
-                              key={i} 
-                              label={skill} 
-                              size="small" 
-                              sx={{ 
-                                backgroundColor: '#fef3c7',
-                                color: '#92400e'
-                              }}
-                            />
-                          ))}
-                        </Box>
-                      </Box>
-                    )}
+                    {/* Contact Information */}
+                    <Grid container spacing={2} sx={{ mb: 3 }}>
+                      <Grid item xs={12} md={6}>
+                        <Paper sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                            Website
+                          </Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 600, color: '#667eea' }}>
+                            <a href={rec.company.website} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'inherit' }}>
+                              Visit Career Page →
+                            </a>
+                          </Typography>
+                        </Paper>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Paper sx={{ p: 2, borderRadius: 2, textAlign: 'center' }}>
+                          <Typography variant="caption" color="text.secondary" sx={{ fontWeight: 600 }}>
+                            Contact
+                          </Typography>
+                          <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                            {rec.company.contactEmail}
+                          </Typography>
+                        </Paper>
+                      </Grid>
+                    </Grid>
 
-                    {/* Job Requirements */}
-                    <Box sx={{ mb: 2, p: 2, background: '#f9fafb', borderRadius: 2 }}>
-                      <Typography variant="body2" sx={{ fontWeight: 600, mb: 1 }}>
-                        Requirements
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary" sx={{ display: 'block', mb: 0.5 }}>
-                        Min CGPA: {rec.company.jobRequirements?.minCGPA || 'N/A'}
-                      </Typography>
-                      <Typography variant="caption" color="text.secondary" sx={{ display: 'block' }}>
-                        Eligible Branches: {rec.company.jobRequirements?.eligibleBranches?.join(', ') || 'All'}
-                      </Typography>
-                    </Box>
-
-                    {/* Action Button */}
-                    <Button 
-                      variant="contained" 
-                      fullWidth
-                      sx={{
-                        background: 'linear-gradient(135deg, #ff6b35 0%, #1e88e5 100%)',
-                        fontWeight: 600,
-                        '&:hover': {
-                          background: 'linear-gradient(135deg, #ff5722 0%, #1976d2 100%)'
-                        }
-                      }}
-                    >
-                      View Details & Apply
-                    </Button>
+                    {/* Action Buttons */}
+                    <Grid container spacing={2}>
+                      <Grid item xs={12} md={6}>
+                        <Button 
+                          variant="contained" 
+                          fullWidth
+                          size="large"
+                          sx={{
+                            background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                            fontWeight: 700,
+                            fontSize: '1.1rem',
+                            py: 1.5,
+                            '&:hover': {
+                              background: 'linear-gradient(135deg, #059669 0%, #047857 100%)'
+                            }
+                          }}
+                          onClick={() => window.open(rec.company.website, '_blank')}
+                        >
+                          View Opportunities
+                        </Button>
+                      </Grid>
+                      <Grid item xs={12} md={6}>
+                        <Button 
+                          variant="outlined" 
+                          fullWidth
+                          size="large"
+                          sx={{
+                            borderWidth: 2,
+                            borderColor: '#10b981',
+                            color: '#10b981',
+                            fontWeight: 700,
+                            fontSize: '1.1rem',
+                            py: 1.5,
+                            '&:hover': {
+                              borderWidth: 2,
+                              borderColor: '#059669',
+                              background: '#ecfdf5'
+                            }
+                          }}
+                        >
+                          Save for Later
+                        </Button>
+                      </Grid>
+                    </Grid>
                   </CardContent>
                 </Card>
               </Grid>

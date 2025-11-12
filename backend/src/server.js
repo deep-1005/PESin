@@ -57,6 +57,7 @@ import alumniRoutes from './routes/alumni.js';
 import companyRoutes from './routes/companies.js';
 import jobRoutes from './routes/jobs.js';
 import adminRoutes from './routes/admin.js';
+import postsRoutes from './routes/posts.js';
 
 // Mount routes
 app.use('/api/auth', authRoutes);
@@ -65,6 +66,8 @@ app.use('/api/alumni', alumniRoutes);
 app.use('/api/companies', companyRoutes);
 app.use('/api/jobs', jobRoutes);
 app.use('/api/admin', adminRoutes);
+// Posts (create/list)
+app.use('/api/posts', postsRoutes);
 
 // Welcome route
 app.get('/', (req, res) => {

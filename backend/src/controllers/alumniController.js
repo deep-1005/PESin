@@ -138,19 +138,19 @@ export const updateAlumniProfile = async (req, res) => {
       });
     }
 
-    // Update fields
-    if (firstName) alumni.firstName = firstName;
-    if (lastName) alumni.lastName = lastName;
-    if (phone) alumni.phone = phone;
-    if (currentCompany) alumni.currentCompany = currentCompany;
-    if (designation) alumni.designation = designation;
+    // Update fields (use !== undefined to allow empty strings and 0 values)
+    if (firstName !== undefined) alumni.firstName = firstName;
+    if (lastName !== undefined) alumni.lastName = lastName;
+    if (phone !== undefined) alumni.phone = phone;
+    if (currentCompany !== undefined) alumni.currentCompany = currentCompany;
+    if (designation !== undefined) alumni.designation = designation;
     if (yearsOfExperience !== undefined) alumni.yearsOfExperience = yearsOfExperience;
-    if (expertise) alumni.expertise = expertise;
+    if (expertise !== undefined) alumni.expertise = expertise;
     if (willingToMentor !== undefined) alumni.willingToMentor = willingToMentor;
-    if (bio) alumni.bio = bio;
-    if (linkedIn) alumni.linkedIn = linkedIn;
-    if (github) alumni.github = github;
-    if (portfolio) alumni.portfolio = portfolio;
+    if (bio !== undefined) alumni.bio = bio;
+    if (linkedIn !== undefined) alumni.linkedIn = linkedIn;
+    if (github !== undefined) alumni.github = github;
+    if (portfolio !== undefined) alumni.portfolio = portfolio;
 
     await alumni.save();
 

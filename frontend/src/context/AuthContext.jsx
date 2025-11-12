@@ -37,21 +37,31 @@ export const AuthProvider = ({ children }) => {
   };
 
   const login = async (email, password) => {
-    const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
-    const { token, user } = response.data.data; // data is nested
-    localStorage.setItem('token', token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    setUser(user);
-    return user;
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+      const { token, user } = response.data.data; // data is nested
+      localStorage.setItem('token', token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setUser(user);
+      return { success: true, message: response.data.message || 'Login successful', user, token };
+    } catch (err) {
+      const message = err?.response?.data?.message || 'Login failed';
+      return { success: false, message };
+    }
   };
 
   const register = async (userData) => {
-    const response = await axios.post('http://localhost:5000/api/auth/register', userData);
-    const { token, user } = response.data.data; // data is nested
-    localStorage.setItem('token', token);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    setUser(user);
-    return user;
+    try {
+      const response = await axios.post('http://localhost:5000/api/auth/register', userData);
+      const { token, user } = response.data.data;
+      localStorage.setItem('token', token);
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setUser(user);
+      return { success: true, message: response.data.message || 'Registration successful', user, token };
+    } catch (err) {
+      const message = err?.response?.data?.message || 'Registration failed';
+      return { success: false, message };
+    }
   };
 
   const logout = () => {

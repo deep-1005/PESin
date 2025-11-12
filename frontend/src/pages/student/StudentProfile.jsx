@@ -18,7 +18,11 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Select,
+  MenuItem,
+  FormControl,
+  InputLabel
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
@@ -46,10 +50,20 @@ const StudentProfile = () => {
     bio: '',
     cgpa: '',
     skills: [],
+    topSkill: '',
     projects: [],
     certifications: [],
     resume: null
   });
+
+  const topSkillOptions = [
+    'JavaScript',
+    'HTML and CSS',
+    'Backend',
+    'Data Science',
+    'Node',
+    'Communication-Soft Skill'
+  ];
   const [newSkill, setNewSkill] = useState('');
   const [projectDialog, setProjectDialog] = useState(false);
   const [certDialog, setCertDialog] = useState(false);
@@ -84,6 +98,7 @@ const StudentProfile = () => {
           bio: data.bio || '',
           cgpa: data.cgpa || '',
           skills: data.skills || [],
+          topSkill: data.topSkill || '',
           projects: data.projects || [],
           certifications: data.certifications || [],
           resume: data.resumeUrl || null
@@ -383,6 +398,39 @@ const StudentProfile = () => {
                   </Typography>
                 </Box>
               </Box>
+
+              {/* Top Skill Dropdown */}
+              <Box sx={{ mb: 3, p: 2, background: 'linear-gradient(135deg, #667eea15, #764ba215)', borderRadius: 2 }}>
+                <Typography variant="subtitle2" sx={{ fontWeight: 700, mb: 1.5, color: '#667eea' }}>
+                  🌟 Select Your Top Skill (for Company Recommendations)
+                </Typography>
+                {editing ? (
+                  <FormControl fullWidth size="small">
+                    <InputLabel>Top Skill</InputLabel>
+                    <Select
+                      value={profileData.topSkill}
+                      label="Top Skill"
+                      onChange={(e) => setProfileData({ ...profileData, topSkill: e.target.value })}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      {topSkillOptions.map((skill) => (
+                        <MenuItem key={skill} value={skill}>
+                          {skill}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                ) : (
+                  <Chip 
+                    label={profileData.topSkill || 'Not selected'} 
+                    color="secondary" 
+                    sx={{ fontWeight: 600, fontSize: '0.95rem' }}
+                  />
+                )}
+              </Box>
+
               {editing && (
                 <Box sx={{ display: 'flex', mb: 2 }}>
                   <TextField

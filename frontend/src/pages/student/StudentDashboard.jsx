@@ -3,13 +3,14 @@ import { Box, Container, Typography, Grid, Card, CardContent, Button } from '@mu
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
 import { motion } from 'framer-motion';
-import { Dashboard, Person, Business, Work, Assignment, People } from '@mui/icons-material';
+import { Dashboard, Person, Business, Work, Assignment, People, Feed as FeedIcon } from '@mui/icons-material';
 
 const StudentDashboard = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
   const menuItems = [
+    { title: 'Community Feed', icon: <FeedIcon />, path: '/student/feed', color: '#8b5cf6' },
     { title: 'My Profile', icon: <Person />, path: '/student/profile', color: '#ff6b35' },
     { title: 'Student Directory', icon: <People />, path: '/student/directory', color: '#10b981' },
     { title: 'Company Recommendations', icon: <Business />, path: '/student/recommendations', color: '#1e88e5' },
@@ -29,47 +30,71 @@ const StudentDashboard = () => {
           className="glass-effect"
           sx={{ 
             mb: 6, 
-            p: 4,
+            p: { xs: 3, md: 5 },
             borderRadius: 5,
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center',
             flexWrap: 'wrap',
-            gap: 2
+            gap: 3,
+            background: 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(30px)',
+            border: '2px solid rgba(255, 255, 255, 0.5)',
+            boxShadow: '0 20px 60px rgba(0, 0, 0, 0.1)'
           }}
         >
           <Box>
             <Typography 
               variant="h3" 
-              className="gradient-text"
               sx={{ 
                 fontWeight: 900,
-                mb: 1,
-                fontSize: { xs: '2rem', md: '3rem' }
+                mb: 2,
+                fontSize: { xs: '2rem', md: '3rem' },
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                letterSpacing: '-0.02em'
               }}
             >
               Student Dashboard
             </Typography>
-            <Typography variant="h6" sx={{ color: '#64748b', fontWeight: 500 }}>
-              Welcome back, <span style={{ fontWeight: 700, color: '#ff6b35' }}>{user?.firstName}</span>! 🚀
+            <Typography 
+              variant="h5" 
+              sx={{ 
+                color: '#1e293b', 
+                fontWeight: 700,
+                fontSize: { xs: '1.2rem', md: '1.5rem' }
+              }}
+            >
+              Welcome back, <span style={{ 
+                fontWeight: 900, 
+                background: 'linear-gradient(135deg, #ff6b35, #f7931e)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent'
+              }}>{user?.firstName}</span>! 🚀
             </Typography>
           </Box>
           <Button 
-            variant="outlined" 
+            variant="contained" 
             color="error" 
             onClick={logout}
             startIcon={<Dashboard />}
             sx={{
               borderRadius: '50px',
-              px: 4,
-              py: 1.5,
-              fontWeight: 700,
-              borderWidth: '2px',
+              px: 5,
+              py: 2,
+              fontWeight: 800,
+              fontSize: '1.1rem',
+              background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+              boxShadow: '0 10px 30px rgba(239, 68, 68, 0.4)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.5px',
               '&:hover': {
-                borderWidth: '2px',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(239, 68, 68, 0.3)'
-              }
+                transform: 'translateY(-3px) scale(1.05)',
+                boxShadow: '0 15px 40px rgba(239, 68, 68, 0.5)',
+                background: 'linear-gradient(135deg, #dc2626 0%, #b91c1c 100%)',
+              },
+              transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)'
             }}
           >
             Logout
@@ -78,7 +103,7 @@ const StudentDashboard = () => {
 
         <Grid container spacing={4}>
           {menuItems.map((item, index) => (
-            <Grid item xs={12} sm={6} md={4} lg={2.4} key={index}>
+            <Grid item xs={12} sm={6} md={4} key={index}>
               <Box
                 component={motion.div}
                 initial={{ opacity: 0, y: 30 }}

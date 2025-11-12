@@ -16,11 +16,19 @@ export default function Login({ onLogin }) {
     setError('');
     try {
       const res = await api.post('/auth/login', form);
-      localStorage.setItem('token', res.data.token);
-      if (onLogin) onLogin(res.data.user);
+      // backend nests response under `data` -> { user, token }
+      const token = res.data?.data?.token;
+      const user = res.data?.data?.user;
+      if (!token) {
+        throw new Error('No token received from server');
+      }
+      localStorage.setItem('token', token);
+      if (onLogin) onLogin(user);
       navigate('/feed');
     } catch (err) {
-      setError(err.response?.data?.msg || 'Login failed');
+      // backend uses `message` for errors
+      const serverMessage = err.response?.data?.message || err.response?.data?.msg;
+      setError(serverMessage || err.message || 'Login failed');
     }
   }
 

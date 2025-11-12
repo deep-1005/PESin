@@ -13,6 +13,8 @@ import RegisterPage from './pages/RegisterPage';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentDirectory from './pages/student/StudentDirectory';
 import StudentProfile from './pages/student/StudentProfile';
+import Feed from './pages/student/Feed';
+import CompanyRecommendations from './pages/student/CompanyRecommendations';
 import CollegeInternalJobs from './pages/CollegeInternalJobs';
 import SimpleAdminDashboard from './pages/admin/SimpleAdminDashboard';
 import AdminDashboard from './pages/admin/AdminDashboard';
@@ -68,6 +70,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <CollegeInternalJobs isAdmin={false} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student/feed"
+            element={
+              <ProtectedRoute>
+                <Feed />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/student/recommendations"
+            element={
+              <ProtectedRoute>
+                <CompanyRecommendations />
               </ProtectedRoute>
             }
           />

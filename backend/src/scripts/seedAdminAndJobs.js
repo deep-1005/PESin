@@ -12,14 +12,14 @@ const seedAdminAndJobs = async () => {
     await mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/pesin');
     console.log('MongoDB connected for seeding...');
 
-    // Create Admin User
-    const adminPassword = await bcrypt.hash('admin123', 10);
-    
+    // Create Admin User (store plaintext here so model's pre-save will hash it)
+    const adminPlainPassword = 'admin123';
+
     const adminUser = {
       firstName: 'Admin',
       lastName: 'Portal',
       email: 'admin@pesin.edu',
-      password: adminPassword,
+      password: adminPlainPassword,
       role: 'admin',
       isApproved: true,
       contactNumber: '+91-9876543210',
@@ -29,7 +29,7 @@ const seedAdminAndJobs = async () => {
     // Check if admin already exists
     const existingAdmin = await User.findOne({ email: 'admin@pesin.edu' });
     let adminId;
-    
+
     if (!existingAdmin) {
       const newAdmin = await User.create(adminUser);
       adminId = newAdmin._id;
@@ -37,8 +37,11 @@ const seedAdminAndJobs = async () => {
       console.log('   Email: admin@pesin.edu');
       console.log('   Password: admin123');
     } else {
+      // Update password for existing admin to ensure it's correctly hashed (avoid double-hash issues)
+      existingAdmin.password = adminPlainPassword;
+      await existingAdmin.save();
       adminId = existingAdmin._id;
-      console.log('ℹ️  Admin user already exists');
+      console.log('ℹ️  Admin user already exists; password reset to admin123');
     }
 
     // Create Internal Job Postings

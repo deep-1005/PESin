@@ -93,6 +93,11 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true
   }],
+  topSkill: {
+    type: String,
+    enum: ['JavaScript', 'HTML and CSS', 'Backend', 'Data Science', 'Node', 'Communication-Soft Skill', ''],
+    default: ''
+  },
   projects: [{
     title: String,
     description: String,
@@ -130,6 +135,20 @@ const userSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
+  
+  // Connections & Followers (LinkedIn-style)
+  connections: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  followers: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
+  following: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  }],
   
   // Alumni specific fields
   currentCompany: {
