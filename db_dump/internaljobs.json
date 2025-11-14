@@ -1,0 +1,274 @@
+[
+  {
+    "eligibilityCriteria": {
+      "minCGPA": 8,
+      "eligibleSemesters": [
+        3,
+        5,
+        7
+      ],
+      "eligibleBranches": [
+        "CSE",
+        "ISE"
+      ],
+      "requiredSkills": [
+        "Data Structures",
+        "Algorithms",
+        "C++",
+        "Java",
+        "Problem Solving"
+      ],
+      "preferredSkills": [
+        "Teaching Experience",
+        "Competitive Programming",
+        "Python"
+      ]
+    },
+    "stipend": {
+      "amount": 5000,
+      "currency": "INR",
+      "frequency": "Monthly"
+    },
+    "contactPerson": {
+      "name": "Dr. Ramesh Kumar",
+      "email": "ramesh.kumar@pesin.edu",
+      "phone": "+91-9876543211"
+    },
+    "_id": "691425466988f407d2115941",
+    "title": "Teaching Assistant - Data Structures & Algorithms (1st Sem)",
+    "category": "Teaching Assistant",
+    "description": "Assist professors in conducting DSA lab sessions, help students with programming assignments, grade assignments, and conduct doubt clearing sessions for 1st semester CSE students.",
+    "department": "CSE",
+    "responsibilities": [
+      "Conduct weekly lab sessions and assist students with DSA concepts",
+      "Grade programming assignments and lab reports",
+      "Hold office hours for student doubt clarification",
+      "Prepare lab materials and example code",
+      "Monitor student progress and provide feedback"
+    ],
+    "duration": "1 semester",
+    "hoursPerWeek": 8,
+    "benefits": [
+      "Certificate of Teaching Assistantship",
+      "Letter of Recommendation",
+      "Teaching experience for resume",
+      "Direct interaction with faculty"
+    ],
+    "applicationDeadline": "2025-12-01T00:00:00.000Z",
+    "startDate": "2026-01-05T00:00:00.000Z",
+    "openings": 3,
+    "isActive": true,
+    "visibleTo": "students",
+    "totalApplications": 0,
+    "postedBy": "691366ea7305b46c499baa74",
+    "__v": 0,
+    "createdAt": "2025-11-12T06:12:22.375Z",
+    "updatedAt": "2025-11-12T06:12:22.375Z"
+  },
+  {
+    "eligibilityCriteria": {
+      "minCGPA": 8.5,
+      "eligibleSemesters": [
+        5,
+        7
+      ],
+      "eligibleBranches": [
+        "CSE",
+        "ISE"
+      ],
+      "requiredSkills": [
+        "Advanced Data Structures",
+        "Graph Algorithms",
+        "Dynamic Programming",
+        "C++",
+        "Java"
+      ],
+      "preferredSkills": [
+        "Competitive Programming",
+        "CodeChef/Codeforces Rating",
+        "Leetcode"
+      ]
+    },
+    "stipend": {
+      "amount": 6000,
+      "currency": "INR",
+      "frequency": "Monthly"
+    },
+    "contactPerson": {
+      "name": "Dr. Priya Sharma",
+      "email": "priya.sharma@pesin.edu",
+      "phone": "+91-9876543212"
+    },
+    "_id": "691425466988f407d2115942",
+    "title": "Teaching Assistant - Data Structures & Algorithms (3rd Sem)",
+    "category": "Teaching Assistant",
+    "description": "Assist in advanced DSA topics including trees, graphs, dynamic programming, and algorithm optimization for 3rd semester students.",
+    "department": "CSE",
+    "responsibilities": [
+      "Assist in teaching advanced DSA topics",
+      "Prepare problem sets and test cases",
+      "Conduct competitive programming practice sessions",
+      "Evaluate assignments and projects",
+      "Mentor students for coding competitions"
+    ],
+    "duration": "1 semester",
+    "hoursPerWeek": 10,
+    "benefits": [
+      "Certificate of Teaching Assistantship",
+      "Letter of Recommendation",
+      "Priority for Research Opportunities",
+      "Free access to online coding platforms"
+    ],
+    "applicationDeadline": "2025-12-01T00:00:00.000Z",
+    "startDate": "2026-01-05T00:00:00.000Z",
+    "openings": 2,
+    "isActive": true,
+    "visibleTo": "students",
+    "totalApplications": 0,
+    "postedBy": "691366ea7305b46c499baa74",
+    "__v": 0,
+    "createdAt": "2025-11-12T06:12:22.375Z",
+    "updatedAt": "2025-11-12T06:12:22.375Z"
+  },
+  {
+    "eligibilityCriteria": {
+      "minCGPA": 9,
+      "eligibleSemesters": [
+        7
+      ],
+      "eligibleBranches": [
+        "CSE",
+        "ISE"
+      ],
+      "requiredSkills": [
+        "Algorithm Design",
+        "Complexity Analysis",
+        "Advanced Data Structures",
+        "Research Skills"
+      ],
+      "preferredSkills": [
+        "Published Papers",
+        "Research Experience",
+        "ACM ICPC Participation"
+      ]
+    },
+    "stipend": {
+      "amount": 7000,
+      "currency": "INR",
+      "frequency": "Monthly"
+    },
+    "contactPerson": {
+      "name": "Dr. Anil Verma",
+      "email": "anil.verma@pesin.edu",
+      "phone": "+91-9876543213"
+    },
+    "_id": "691425466988f407d2115943",
+    "title": "Teaching Assistant - Advanced Algorithms (5th Sem)",
+    "category": "Teaching Assistant",
+    "description": "Support faculty in teaching advanced algorithm design, analysis, and optimization techniques for 5th semester CSE students.",
+    "department": "CSE",
+    "responsibilities": [
+      "Assist in lectures on advanced algorithmic paradigms",
+      "Guide students in research-oriented algorithm projects",
+      "Evaluate complex algorithm implementations",
+      "Prepare study materials and reference guides",
+      "Organize algorithm design workshops"
+    ],
+    "duration": "1 semester",
+    "hoursPerWeek": 12,
+    "benefits": [
+      "Certificate of Teaching Assistantship",
+      "Strong Letter of Recommendation",
+      "Research collaboration opportunities",
+      "Conference attendance support"
+    ],
+    "applicationDeadline": "2025-12-01T00:00:00.000Z",
+    "startDate": "2026-01-05T00:00:00.000Z",
+    "openings": 2,
+    "isActive": true,
+    "visibleTo": "students",
+    "totalApplications": 0,
+    "postedBy": "691366ea7305b46c499baa74",
+    "__v": 0,
+    "createdAt": "2025-11-12T06:12:22.376Z",
+    "updatedAt": "2025-11-12T06:12:22.376Z"
+  },
+  {
+    "eligibilityCriteria": {
+      "minCGPA": 7.5,
+      "eligibleSemesters": [
+        3,
+        5,
+        7
+      ],
+      "eligibleBranches": [
+        "CSE",
+        "ISE",
+        "ECE",
+        "ETE"
+      ],
+      "requiredSkills": [
+        "Python",
+        "Git/GitHub",
+        "Linux",
+        "Programming Fundamentals"
+      ],
+      "preferredSkills": [
+        "Machine Learning",
+        "Deep Learning",
+        "TensorFlow/PyTorch",
+        "React/Node.js",
+        "IoT/Raspberry Pi",
+        "Docker",
+        "Previous research experience"
+      ]
+    },
+    "stipend": {
+      "amount": 8000,
+      "currency": "INR",
+      "frequency": "Monthly"
+    },
+    "contactPerson": {
+      "name": "Dr. Joel Sebastian",
+      "email": "joel.sebastian@pesin.edu",
+      "phone": "+91-9876543214"
+    },
+    "_id": "691425466988f407d2115944",
+    "title": "Research Intern - JOEL Lab (Joy of Engineering Lab)",
+    "category": "Research Assistant",
+    "description": "Immediate opening for motivated students to work on cutting-edge open-source projects in AI/ML, IoT, and Web Technologies at JOEL Lab (Joy of Engineering Lab). This is a hands-on research internship with real-world project exposure.",
+    "department": "CSE",
+    "responsibilities": [
+      "Contribute to ongoing open-source research projects",
+      "Develop and test AI/ML models and applications",
+      "Work on IoT sensor integration and data collection",
+      "Build web applications for research data visualization",
+      "Document research findings and write technical reports",
+      "Collaborate with PhD students and faculty researchers",
+      "Present findings at weekly lab meetings"
+    ],
+    "duration": "6 months (extendable)",
+    "hoursPerWeek": 15,
+    "benefits": [
+      "Work on published research papers",
+      "Co-authorship opportunities on publications",
+      "Certificate of Research Internship",
+      "Strong Letter of Recommendation",
+      "Access to high-performance computing resources",
+      "Conference presentation opportunities",
+      "Networking with industry partners",
+      "Priority for MS/PhD recommendations"
+    ],
+    "applicationDeadline": "2025-11-25T00:00:00.000Z",
+    "startDate": "2025-11-28T00:00:00.000Z",
+    "openings": 5,
+    "isActive": true,
+    "visibleTo": "students",
+    "totalApplications": 0,
+    "postedBy": "691366ea7305b46c499baa74",
+    "additionalInfo": "Interview and technical test required. Please prepare a project portfolio showcasing your work in AI/ML or IoT.",
+    "__v": 0,
+    "createdAt": "2025-11-12T06:12:22.376Z",
+    "updatedAt": "2025-11-12T06:12:22.376Z"
+  }
+]

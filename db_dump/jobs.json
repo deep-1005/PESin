@@ -1,0 +1,327 @@
+[
+  {
+    "salary": {
+      "min": 1500000,
+      "max": 2000000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e2895616",
+    "company": "6914c19e8b9eeb49e28955f2",
+    "title": "Software Engineer - Frontend",
+    "description": "Build next-generation web applications using React and modern JavaScript",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "Hybrid",
+    "requiredSkills": [
+      "JavaScript",
+      "React",
+      "TypeScript"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 5,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f2",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.799Z",
+    "updatedAt": "2025-11-12T17:19:27.799Z"
+  },
+  {
+    "salary": {
+      "min": 1800000,
+      "max": 2500000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e2895617",
+    "company": "6914c19e8b9eeb49e28955f3",
+    "title": "Machine Learning Engineer",
+    "description": "Develop AI/ML solutions for cloud services",
+    "type": "Full-time",
+    "location": "Hyderabad, India",
+    "workMode": "On-site",
+    "requiredSkills": [
+      "Python",
+      "Machine Learning",
+      "Azure"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE",
+      "ECE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 3,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f3",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 1600000,
+      "max": 2200000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e2895618",
+    "company": "6914c19e8b9eeb49e28955f4",
+    "title": "Backend Developer",
+    "description": "Design and develop scalable microservices",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "On-site",
+    "requiredSkills": [
+      "Java",
+      "AWS",
+      "Distributed Systems"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 4,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f4",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 600000,
+      "max": 1000000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e2895619",
+    "company": "6914c19e8b9eeb49e28955f5",
+    "title": "Data Analyst",
+    "description": "Analyze data and provide business insights",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "Hybrid",
+    "requiredSkills": [
+      "Python",
+      "SQL",
+      "Data Analytics"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE",
+      "ECE",
+      "EEE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 10,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f5",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 500000,
+      "max": 800000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e289561a",
+    "company": "6914c19e8b9eeb49e28955f6",
+    "title": "Full Stack Developer",
+    "description": "Work on end-to-end web application development",
+    "type": "Full-time",
+    "location": "Mumbai, India",
+    "workMode": "On-site",
+    "requiredSkills": [
+      "Java",
+      "React",
+      "Spring Boot"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE",
+      "ECE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 15,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f6",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 1200000,
+      "max": 1800000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e289561b",
+    "company": "6914c19e8b9eeb49e28955f7",
+    "title": "Python Developer",
+    "description": "Build e-commerce backend services",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "Hybrid",
+    "requiredSkills": [
+      "Python",
+      "MongoDB",
+      "Microservices"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 6,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f7",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 1000000,
+      "max": 1500000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e289561c",
+    "company": "6914c19e8b9eeb49e28955f8",
+    "title": "UI/UX Designer",
+    "description": "Design intuitive user interfaces for creative tools",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "Hybrid",
+    "requiredSkills": [
+      "UI/UX Design",
+      "Figma",
+      "React"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 2,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f8",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  },
+  {
+    "salary": {
+      "min": 1400000,
+      "max": 2000000,
+      "currency": "INR"
+    },
+    "_id": "6914c19f8b9eeb49e289561d",
+    "company": "6914c19e8b9eeb49e28955f9",
+    "title": "DevOps Engineer",
+    "description": "Manage infrastructure and deployment pipelines",
+    "type": "Full-time",
+    "location": "Bangalore, India",
+    "workMode": "On-site",
+    "requiredSkills": [
+      "Kubernetes",
+      "Docker",
+      "Microservices"
+    ],
+    "preferredSkills": [],
+    "minCGPA": 0,
+    "minExperience": 0,
+    "eligibleBranches": [
+      "CSE",
+      "ISE",
+      "ECE"
+    ],
+    "eligibleSemesters": [
+      7,
+      8
+    ],
+    "responsibilities": [],
+    "benefits": [],
+    "applicationDeadline": "2025-12-31T00:00:00.000Z",
+    "openings": 3,
+    "isActive": true,
+    "totalApplications": 0,
+    "postedBy": "6914c19e8b9eeb49e28955f9",
+    "__v": 0,
+    "createdAt": "2025-11-12T17:19:27.800Z",
+    "updatedAt": "2025-11-12T17:19:27.800Z"
+  }
+]

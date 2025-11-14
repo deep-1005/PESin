@@ -1,0 +1,51 @@
+[
+  {
+    "_id": "6912ea2249f08ebfb478822e",
+    "user": "6912e8532044889329059d4a",
+    "content": "Hi..this is the first Webtech project\n",
+    "image": "",
+    "likes": [],
+    "comments": [],
+    "createdAt": "2025-11-11T07:47:46.322Z",
+    "__v": 0
+  },
+  {
+    "_id": "69131687d6c80c78f37137b0",
+    "user": "6913164ed6c80c78f3713792",
+    "content": "This is the 2nd feed of the page\n",
+    "image": "",
+    "likes": [],
+    "comments": [],
+    "createdAt": "2025-11-11T10:57:11.385Z",
+    "__v": 0
+  },
+  {
+    "_id": "691424bd37d8638c242f8fdb",
+    "content": "hello",
+    "author": "69135f328496f370e94103eb",
+    "likes": [
+      "69135f328496f370e94103eb"
+    ],
+    "comments": [],
+    "createdAt": "2025-11-12T06:10:05.919Z",
+    "__v": 1
+  },
+  {
+    "_id": "6916a0b13ab7054db4c3deff",
+    "content": "hi this is a trial",
+    "author": "6916a0763ab7054db4c3def6",
+    "likes": [
+      "6914c19f8b9eeb49e2895600"
+    ],
+    "comments": [
+      {
+        "user": "6914c19f8b9eeb49e2895600",
+        "text": "hello",
+        "_id": "6916a3f63ab7054db4c3df79",
+        "createdAt": "2025-11-14T03:37:26.881Z"
+      }
+    ],
+    "createdAt": "2025-11-14T03:23:29.654Z",
+    "__v": 2
+  }
+]
